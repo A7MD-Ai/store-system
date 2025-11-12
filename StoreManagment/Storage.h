@@ -12,13 +12,17 @@ class Storage {
 public:
 
 
-	void saveTofile() {
+	void saveTofile(LinkedList& list){
 		ofstream file("StorageDB.csv");
 
 		if (!file.is_open()) {
 			cout << "Error opening file\n";
 			return;
 		}
+
+		file << "ID,Name,Quantity,Price\n";
+
+
 		Node* current = list.gethead();
 		while (current != nullptr) {
 			file << current->id << ","
@@ -30,13 +34,17 @@ public:
 		file.close();
 	}
 
-	void loadfromfile() {
+	void loadfromfile(LinkedList& list) {
 		ifstream file("StorageDB.csv");
 
 		if (!file.is_open()) {
 			cout << "Error opening file\n";
 			return;
 		}
+
+		string line1;
+		getline(file, line1);
+
 		string line;
 		while (getline(file, line)) {
 
@@ -49,6 +57,7 @@ public:
 			getline(ss, priceStr, ',');
 
 			Node load;
+
 			 load.id = stoi(idStr);
 			 load.name = name;
 			 load.Quantity = stoi(quantityStr);

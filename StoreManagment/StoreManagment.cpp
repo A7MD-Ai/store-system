@@ -13,7 +13,9 @@ int main() {
 	Storage product;
 	LinkedList obj;
 	int choise;
-	
+
+	product.loadfromfile(obj);
+
 	while (flag){
 		cout << R"(
  ____  _                                                                            _                      _                 
@@ -34,9 +36,8 @@ int main() {
 		
 		switch (choise){
 			case  1:
-				product.loadfromfile();
 				obj.AddProduct();
-				product.saveTofile();
+				product.saveTofile(obj);
 				ask();
 			    break;
 					
@@ -52,23 +53,25 @@ int main() {
 
 			case 4:
 				obj.DeleteProduct();
-				product.saveTofile();
+				product.saveTofile(obj);
 				ask();
 				break;
 
 			case 5:
 				obj.UpdateProduct();
+				product.saveTofile(obj);
 				ask();
 				break;
 
 			case 6:
-				product.saveTofile();
+				product.saveTofile(obj);
 				cout << "\nprogramm closed.";
 				flag = false;
 				break;
 
 			default:	
 				cout << "\nwrong input.\n\n";
+				product.saveTofile(obj);
 				ask();
 				break;	
 		}
@@ -81,7 +84,7 @@ void ask() {
 	
 	int x =0;
 	
-	while(x != 1 || x != 2){
+	while(x != 1 && x != 2){
 		cout << "\n\nPress [1]~>continue\n";
 	cout << "Press [2]~>close app\n";
 	x = validateInput();

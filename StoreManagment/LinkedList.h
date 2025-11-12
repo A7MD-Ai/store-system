@@ -307,32 +307,21 @@ public:
 	}
 	void addProductfromfile(Node* load) {
 		Node* New_product = new Node;
-		
+		New_product->id = load->id;
+		New_product->name = load->name;
+		New_product->Quantity = load->Quantity;
+		New_product->price = load->price;
+		New_product->next = nullptr;
 
 		if (head == nullptr) {
-
-			New_product->id = load->id;
-			New_product->name = load->name;
-			New_product->Quantity = load->Quantity;
-			New_product->price = load->price;
-
-			New_product->next = nullptr;
 			head = New_product;
 			tail = New_product;
 		}
 		else {
-
-			Node* current = tail;
-			New_product->id = load->id;
-			New_product->name = load->name;
-			New_product->Quantity = load->Quantity;
-			New_product->price = load->price;
-
-			current->next = New_product;
+			tail->next = New_product;
 			tail = New_product;
-
-			New_product->next = nullptr;
 		}
+		delete load;
 		
 	}
 
