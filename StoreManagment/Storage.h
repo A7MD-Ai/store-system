@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include<iostream>
 #include<fstream>
 #include<sstream>
@@ -55,7 +55,7 @@ public:
 			getline(ss, name, ',');
 			getline(ss, quantityStr, ',');
 			getline(ss, priceStr, ',');
-
+			 
 			Node load;
 
 			 load.id = stoi(idStr);

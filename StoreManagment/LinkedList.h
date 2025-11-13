@@ -7,8 +7,8 @@
 
 using namespace std;
 
-/*inline*/ int validateInput();
-/*inline*/ double validateInputDouble();
+ int validateInput();
+ double validateInputDouble();
 		  
 class LinkedList{
 
@@ -30,6 +30,8 @@ public:
 		cout << "Enter product name: ";
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		getline(cin, New_product->name);
+
+		if (New_product->name == ""){}
 
 		cout << "\nEnter product price: ";
 		New_product->price = validateInputDouble();
@@ -321,13 +323,12 @@ public:
 			tail->next = New_product;
 			tail = New_product;
 		}
-		delete load;
 		
 	}
 
 };
 
-/*inline*/ double validateInputDouble() {
+ double validateInputDouble() {
 	double choice = 0;
 	while (true) {
 		if (!(cin >> choice)) {
@@ -339,7 +340,7 @@ public:
 		return choice;
 	}
 }
-/*inline*/ int validateInput() {
+ int validateInput() {   
 	int choice = 0;
 	while (true) {
 		if (!(cin >> choice)) {
