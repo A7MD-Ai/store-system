@@ -4,7 +4,7 @@
 
 
 using namespace std;
-struct Node{
+struct Node {
 	string name;
 	int id;
 	int Quantity;

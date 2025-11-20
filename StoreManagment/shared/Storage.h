@@ -12,8 +12,8 @@ class Storage {
 public:
 
 
-	void saveTofile(LinkedList& list){
-		ofstream file("StorageDB.csv");
+	void saveTofile(LinkedList& list) {
+		ofstream file("data/StorageDB.csv");
 
 		if (!file.is_open()) {
 			cout << "Error opening file\n";
@@ -35,7 +35,7 @@ public:
 	}
 
 	void loadfromfile(LinkedList& list) {
-		ifstream file("StorageDB.csv");
+		ifstream file("data/StorageDB.csv");
 
 		if (!file.is_open()) {
 			cout << "Error opening file\n";
@@ -55,15 +55,15 @@ public:
 			getline(ss, name, ',');
 			getline(ss, quantityStr, ',');
 			getline(ss, priceStr, ',');
-			 
+
 			Node load;
 
-			 load.id = stoi(idStr);
-			 load.name = name;
-			 load.Quantity = stoi(quantityStr);
-			 load.price = stod(priceStr);
+			load.id = stoi(idStr);
+			load.name = name;
+			load.Quantity = stoi(quantityStr);
+			load.price = stod(priceStr);
 
-			 list.addProductfromfile(&load);
+			list.addProductfromfile(&load);
 		}
 
 		file.close();
