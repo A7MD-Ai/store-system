@@ -16,7 +16,9 @@ public:
 		ofstream file("data/StorageDB.csv");
 
 		if (!file.is_open()) {
+			SetConsoleTextAttribute(h_console, 12);
 			cout << "Error opening file\n";
+			SetConsoleTextAttribute(h_console, 7);
 			return;
 		}
 
@@ -38,7 +40,9 @@ public:
 		ifstream file("data/StorageDB.csv");
 
 		if (!file.is_open()) {
+			SetConsoleTextAttribute(h_console, 12);
 			cout << "Error opening file\n";
+			SetConsoleTextAttribute(h_console, 7);
 			return;
 		}
 

@@ -143,7 +143,7 @@ public:
 			}
 
 			if (current == nullptr) {
-				SetConsoleTextAttribute(h_console, 64);
+				SetConsoleTextAttribute(h_console, 12);
 				cout << "product not found.";
 				SetConsoleTextAttribute(h_console, 7);
 				return;
@@ -164,7 +164,7 @@ public:
 	}
 	void displayTable() {
 		if (head == nullptr) {
-			SetConsoleTextAttribute(h_console, 64);
+			SetConsoleTextAttribute(h_console, 12);
 			cout << "\nNo products available.\n";
 			SetConsoleTextAttribute(h_console, 7);
 			return;
@@ -226,7 +226,7 @@ public:
 			current = current->next;
 		}
 		if (current == nullptr) {
-			SetConsoleTextAttribute(h_console, 64);
+			SetConsoleTextAttribute(h_console, 12);
 			cout << "\nproduct not found.";
 			SetConsoleTextAttribute(h_console, 7);
 			return;
@@ -283,7 +283,7 @@ public:
 		}
 
 		if (current == nullptr) {
-			SetConsoleTextAttribute(h_console, 64);
+			SetConsoleTextAttribute(h_console, 12);
 			cout << "\nProduct not found.\n";
 			SetConsoleTextAttribute(h_console, 7);
 			return;
@@ -339,7 +339,7 @@ public:
 		}
 
 		if (current == nullptr) {
-			SetConsoleTextAttribute(h_console, 64);
+			SetConsoleTextAttribute(h_console, 12);
 			cout << "\nproduct not found.";
 			SetConsoleTextAttribute(h_console, 7);
 			return;
@@ -443,7 +443,7 @@ double validateInputDouble() {
 	double choice = 0;
 	while (true) {
 		if (!(cin >> choice)) {
-			SetConsoleTextAttribute(h_console, 64);
+			SetConsoleTextAttribute(h_console, 12);
 			cout << "* Invalid input! Please enter a number ~> ";
 			SetConsoleTextAttribute(h_console, 7);
 			cin.clear();
@@ -457,7 +457,7 @@ int validateInput() {
 	int choice = 0;
 	while (true) {
 		if (!(cin >> choice)) {
-			SetConsoleTextAttribute(h_console, 64);
+			SetConsoleTextAttribute(h_console, 12);
 			cout << "* Invalid input!\n\n";
 			SetConsoleTextAttribute(h_console, 7);
 			cout << "Please enter a number ~> ";

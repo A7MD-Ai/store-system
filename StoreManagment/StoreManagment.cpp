@@ -71,7 +71,9 @@ int main() {
 			break;
 
 		default:
+			SetConsoleTextAttribute(h_console, 12);
 			cout << "\nwrong input.\n\n";
+			SetConsoleTextAttribute(h_console, 7);
 			product.saveTofile(obj);
 			ask();
 			break;
@@ -98,7 +100,9 @@ void ask() {
 		}
 		else {
 			system("cls");
+			SetConsoleTextAttribute(h_console, 12);
 			cout << "\n wrong number \n";
+			SetConsoleTextAttribute(h_console, 7);
 
 		}
 	}
