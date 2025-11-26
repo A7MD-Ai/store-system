@@ -61,6 +61,13 @@ public:
 
 				a = 1;
 			}
+			else if (New_product->name.length() > 20) {
+				SetConsoleTextAttribute(h_console, 12);						//color red
+				cout << "\nyou have typed a longer name than the permitted 20 letters. \n";
+				SetConsoleTextAttribute(h_console, 7);						//color white
+
+				a = 1;
+			}
 
 			else {
 				a = 0;
@@ -74,6 +81,13 @@ public:
 			if (New_product->price <= 0) {
 				SetConsoleTextAttribute(h_console, 12); //color red
 				cout << "you type wrong numbers \n";
+				SetConsoleTextAttribute(h_console, 7); //color white
+
+				a = 1;
+			}
+			else if (New_product->price > 999999) {
+				SetConsoleTextAttribute(h_console, 12); //color red
+				cout << "you have typed a price higher than the permitted price (999999). \n";
 				SetConsoleTextAttribute(h_console, 7); //color white
 
 				a = 1;
@@ -463,7 +477,6 @@ int validateInput() {
 			cout << "Please enter a number ~> ";
 			cin.clear();
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			continue;
 			continue;
 		}
 		return choice;
