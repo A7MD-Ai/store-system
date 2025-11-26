@@ -24,7 +24,6 @@ public:
 
 		file << "ID,Name,Quantity,Price\n";
 
-
 		Node* current = list.gethead();
 		while (current != nullptr) {
 			file << current->id << ","

@@ -2,8 +2,6 @@
 #pragma once
 #define NOMINMAX
 #include<iostream>
-#include<sstream>
-#include<fstream>
 #include <iomanip>
 #include <cctype>
 #include <Windows.h>
@@ -23,9 +21,7 @@ class LinkedList {
 private:
 	Node* head;
 
-
 public:
-
 
 	LinkedList() {
 		head = nullptr;
@@ -34,34 +30,36 @@ public:
 	void AddProduct() {
 		Node* New_product = new Node;
 		int a = 0;
-		//New_product->id = ID();
-
-
 
 		do {
 			New_product->id = ID();
+
 			if (cheak2(New_product->id) || New_product->id == 0) {
 				a = 1;
 			}
-
 			else {
 				a = 0;
 			}
-		} while (a);
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		do {
 
+		} while (a);
+
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+		do {
 			cout << "Enter product name: ";
 			getline(cin, New_product->name);
+
 			// هنا مشكلة الحل حق الفراغ و بداية الاسم رقم 
 			if (New_product->name.empty() || cheak(New_product->name) || isdigit(New_product->name[0])) {
+
 				SetConsoleTextAttribute(h_console, 12);						//color red
 				cout << "\nyou type wrong names or you reuse a name \n";
 				SetConsoleTextAttribute(h_console, 7);						//color white
 
 				a = 1;
 			}
-			else if (New_product->name.length() > 20) {
+			else if (New_product->name.length() > 30) {
+
 				SetConsoleTextAttribute(h_console, 12);						//color red
 				cout << "\nyou have typed a longer name than the permitted 20 letters. \n";
 				SetConsoleTextAttribute(h_console, 7);						//color white
@@ -72,13 +70,16 @@ public:
 			else {
 				a = 0;
 			}
+
 		} while (a);
+
 		// الحل حق مشكلة انه الارقام اقل من صفر
 		do {
 			cout << "Enter product price: ";
 			New_product->price = validateInputDouble();
 
 			if (New_product->price <= 0) {
+
 				SetConsoleTextAttribute(h_console, 12); //color red
 				cout << "you type wrong numbers \n";
 				SetConsoleTextAttribute(h_console, 7); //color white
@@ -86,6 +87,7 @@ public:
 				a = 1;
 			}
 			else if (New_product->price > 999999) {
+
 				SetConsoleTextAttribute(h_console, 12); //color red
 				cout << "you have typed a price higher than the permitted price (999999). \n";
 				SetConsoleTextAttribute(h_console, 7); //color white
@@ -96,13 +98,15 @@ public:
 			else {
 				a = 0;
 			}
+
 		} while (a);
-		// نفس المنغلة الي فوق
+
 		do {
-			cout << "\nEnter product quantity: ";
+			cout << "Enter product quantity: ";
 			New_product->Quantity = validateInput();
 
 			if (New_product->Quantity <= 0) {
+
 				SetConsoleTextAttribute(h_console, 12);
 				cout << "you type wrong numbers \n";
 				SetConsoleTextAttribute(h_console, 7);
@@ -113,6 +117,7 @@ public:
 			else {
 				a = 0;
 			}
+
 		} while (a);
 
 		if (head == nullptr) {
@@ -136,14 +141,15 @@ public:
 	}
 	void DeleteProduct() {
 
+		if (head == nullptr){
 
-		if (head == nullptr)
-		{
 			SetConsoleTextAttribute(h_console, 12);
 			cout << "there are no products.";
 			SetConsoleTextAttribute(h_console, 7);
 		}
+
 		else {
+
 			int ID;
 			cout << "Enter id: ";
 			ID = validateInput();
@@ -177,7 +183,9 @@ public:
 		}
 	}
 	void displayTable() {
+
 		if (head == nullptr) {
+
 			SetConsoleTextAttribute(h_console, 12);
 			cout << "\nNo products available.\n";
 			SetConsoleTextAttribute(h_console, 7);
@@ -192,6 +200,7 @@ public:
 		Node* current = head;
 
 		while (current != nullptr) {
+
 			idWidth = max(idWidth, (int)to_string(current->id).length());
 			nameWidth = max(nameWidth, (int)current->name.length());
 			qtyWidth = max(qtyWidth, (int)to_string(current->Quantity).length());
@@ -201,10 +210,10 @@ public:
 			if (priceStr.find('.') != string::npos) {
 				priceStr = priceStr.substr(0, priceStr.find('.') + 3);
 			}
+
 			priceWidth = max(priceWidth, (int)priceStr.length());
 			current = current->next;
 		}
-
 
 		int totalWidth = idWidth + nameWidth + qtyWidth + priceWidth + 13;
 
@@ -253,6 +262,7 @@ public:
 
 		Node* temp = head;
 		while (temp != nullptr) {
+
 			idWidth = max(idWidth, (int)to_string(temp->id).length());
 			nameWidth = max(nameWidth, (int)temp->name.length());
 			qtyWidth = max(qtyWidth, (int)to_string(temp->Quantity).length());
@@ -261,6 +271,7 @@ public:
 			if (priceStr.find('.') != string::npos) {
 				priceStr = priceStr.substr(0, priceStr.find('.') + 3);
 			}
+
 			priceWidth = max(priceWidth, (int)priceStr.length());
 			temp = temp->next;
 		}
@@ -285,7 +296,8 @@ public:
 		cout << setfill('-') << setw(totalWidth) << "-" << setfill(' ') << "\n\n";
 
 	}
-	void searchbyName() {
+	void searchbyName() { 
+
 		string name;
 		cout << "Product name: ";
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -342,6 +354,7 @@ public:
 		cout << setfill('-') << setw(totalWidth) << "-" << setfill(' ') << "\n\n";
 	}
 	void UpdateProduct() {
+
 		int ID;
 		int a = 0;
 		cout << "Enter id: ";
@@ -410,8 +423,7 @@ public:
 
 		if (head == nullptr) {
 			head = New_product;
-
-		}
+		} 
 		else {
 			Node* tail = head;
 			while (tail->next != NULL) {

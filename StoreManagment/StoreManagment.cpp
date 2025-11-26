@@ -1,10 +1,9 @@
 #include <iostream>
 #include <sstream>
-#include"shared/Product.h"
-#include"shared/Storage.h"
+#include "shared/Product.h"
+#include "shared/Storage.h"
 #include "shared/LinkedList.h"
 using namespace std;
-
 
 void ask();
 
